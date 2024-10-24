@@ -7,6 +7,12 @@ def encode(digits):
         new_password  += str((int(password[i]) + 3) % 10)
     return new_password
 
+def decode(encoded_password):
+    original_password = ''
+    for i in range(len(encoded_password)):
+        original_password += str((7 + int(encoded_password[i])) % 10)
+    return original_password
+
 if __name__ == '__main__':
     choice = 0
     while choice != '3':
@@ -21,6 +27,8 @@ if __name__ == '__main__':
             password = input("Please enter your password to encode: ")
             new_password = encode(password)
         elif choice == '2':
-            pass
+            decoded_password = decode(encoded_password)
+            print("The encoded password is", encoded_password, ",", end="")
+            print("and the original password is", decoded_password)
         elif choice == '3':
             break
